@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,17 +60,18 @@ namespace SudokuValidator
 
             if(returnValue == true)
             {
-                PrintColorfulMessage("The solution is valid", ConsoleColor.Green);
+                PrintColorfulMessage("The Sudoku solution is valid", ConsoleColor.Green);
             }
 
             else
             {
-                PrintColorfulMessage("The solution is not valid", ConsoleColor.Red);
+                PrintColorfulMessage("The sudoku solution is not valid", ConsoleColor.Red);
             }
 
 
         }
 
+        //function to collect custom grid data
         private int[,] CollectSudokukoData()
         {
             int[,] data = new int[9, 9];
@@ -77,13 +79,31 @@ namespace SudokuValidator
 
             for(int row = 0; row < 9; row++)
             {
+                string temp = String.Empty;
+               if (row + 1 == 1)
+                {
+                    temp = "st";
+                }
+               else if(row + 1 == 2)
+                {
+                    temp = "nd";
+                }
+               else if (row  + 1 == 3)
+                {
+                    temp = "rd";
+                }
+                else {
+                    temp = "th";
+                }
+
+                PrintColorfulMessage($"Enter the numbers of the {row + 1}{temp} row", ConsoleColor.Yellow);
                 for (int col = 0; col < 9; col++)
                 {
-                    Console.Write($"Enter Matrix[{row + 1}][{col + 1}]: ");
+                    Console.Write($"Enter Grid Data, Row:[{row + 1}] Column: [{col + 1}]: ");
                     do
                     {
-                        string stringDate = Console.ReadLine();
-                        if (int.TryParse(stringDate, out int value))
+                        string stringData = Console.ReadLine();
+                        if (int.TryParse(stringData, out int value))
                         {
                             data[row, col] = value;
                             escapeWhileLoop = true;
@@ -98,6 +118,7 @@ namespace SudokuValidator
                     
                    // data[row, col] = int.Parse(Console.ReadLine());
                 }
+                Console.Clear();
                PrintColorfulMessage($"you complete the number {row + 1} row", ConsoleColor.Yellow);
             }
 
@@ -111,6 +132,8 @@ namespace SudokuValidator
             Console.ForegroundColor = ConsoleColor.White;
         }
 
+
+        //print grid or 9X9 matrix in sudoku format
         private void printMatrix(int[,] matrix)
         {
             for (int i = 0; i < 9; i++)

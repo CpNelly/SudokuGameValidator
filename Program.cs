@@ -6,13 +6,13 @@ internal class Program
     {
         string closeGameOption = "";
 
-        while (closeGameOption != "q" || closeGameOption != "Q")
+        while (closeGameOption != "q" && closeGameOption != "Q")
         {
             SudokuGame Game = new SudokuGame() { Name = "My Sudoku Game" };
             Game.Start();
 
 
-            Console.WriteLine("Enter q or Q to quit game!");
+            Console.WriteLine("Enter q or Q to quit game or press any other key to continue!");
             closeGameOption = Console.ReadLine();
             
         }
