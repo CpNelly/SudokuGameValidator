@@ -68,9 +68,7 @@ dotnet run
 	 | 2 8 7 | 4 1 9 | 6 3 5 |
 	 | 3 4 5 | 2 8 6 | 1 7 9 |
 	
-	 
-
-✅ The Sudoku solution is valid.
+	✅ The Sudoku solution is valid.	 
 
 📁 Project Structure
 
